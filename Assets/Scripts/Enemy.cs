@@ -4,18 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(GroundDetection))]
-public class Slime : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    [Header("Movement")]
     public float walkSpeed = 3f;
     public float wallDistance = 0.2f;
     public float walkStopRate = 0.05f;
 
+    [Header("Agro")]
+    public float agroRange = 4f;
+    public float agroMoveSpeed = 8f;
+    [SerializeField] bool isAgro;
+    [SerializeField] bool isSearching;
+    public Transform player;
+
+    [Header("Detection")]
     public ContactFilter2D castFilter;
     CapsuleCollider2D touchingCol;
     public DetectionZone attackZone;
     public DetectionZone cliffZone;
-    
-    
+    public Transform castPoint;
+
+
     Rigidbody2D rb;
     GroundDetection touchingDirections;
     Animator animator;
@@ -101,10 +111,32 @@ public class Slime : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingCol = GetComponent<CapsuleCollider2D>();
         damageable = GetComponent<Damageable>();
+        isAgro = false;
     }
 
     private void Update()
     {
+        if (CanSeePlayer(agroRange))
+        {
+            //agro enemy
+            isAgro = true;
+        }
+        else
+        {
+            if (isAgro)
+            {
+                if (!isSearching)
+                {
+                    isSearching = true;
+                    //Invoke("StopChasingPlayer", 5);
+                    StartCoroutine(StopChasingPlayer());
+                }
+            }
+        }
+
+        if (isAgro)
+            ChasePlayer();
+
         HasTarget = attackZone.detectedColliders.Count > 0;
 
         if(attackCooldown > 0)
@@ -115,17 +147,82 @@ public class Slime : MonoBehaviour
     {
         isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
 
-        if (touchingDirections.isGrounded && isOnWall)
+        if (!CanSeePlayer(agroRange))
         {
-            FlipDirection();
-        }
+            if (touchingDirections.isGrounded && isOnWall)
+            {
+                FlipDirection();
+            }
 
-        if (!damageable.LockMovement)
+            if (!damageable.LockMovement)
+            {
+                Patrol();
+            }
+        }
+    }
+
+    private void Patrol()
+    {
+        if (canMove /*&& touchingDirections.isGrounded*/)
+            rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+        else
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+    }
+
+    bool CanSeePlayer(float distance)
+    {
+        bool value = false;
+        float castDist = distance;
+
+        if (_walkDirection == 0)
         {
-            if (canMove /*&& touchingDirections.isGrounded*/)
-                rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+            castDist = distance;
+        }
+        else
+        {
+            castDist = -distance;
+        }
+        
+        Vector2 endPos = castPoint.position + Vector3.right * castDist;
+        RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPos, 1 << LayerMask.NameToLayer("Player"));
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                value = true;
+            }
             else
-                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+            {
+                value = false;
+            }
+
+            Debug.DrawLine(castPoint.position, hit.point, Color.red);
+
+        }
+        else
+            Debug.DrawLine(castPoint.position, endPos, Color.blue);
+
+        return value;
+    }
+
+    private void ChasePlayer()
+    {
+        if (transform.position.x < player.position.x)
+        {
+            //enemy is to the left of the player, then move right
+            rb.velocity = new Vector2(agroMoveSpeed, 0);
+            //transform.localScale = new Vector2(1, 1);
+            //isFacingRight = true;
+            WalkDirection = WalkableDirection.Right;
+        }
+        else
+        {
+            //enemy is to the right of the player, then move left
+            rb.velocity = new Vector2(-agroMoveSpeed, 0);
+            //transform.localScale = new Vector2(-1, 1);
+            //isFacingRight = false;
+            WalkDirection = WalkableDirection.Left;
         }
     }
 
@@ -149,5 +246,12 @@ public class Slime : MonoBehaviour
     {
         if (touchingDirections.isGrounded)
             FlipDirection();
+    }
+
+    IEnumerator StopChasingPlayer()
+    {
+        yield return new WaitForSeconds(5);
+        isAgro = false;
+        isSearching = false;
     }
 }

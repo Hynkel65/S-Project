@@ -102,8 +102,8 @@ MonoBehaviour:
   - {fileID: 8521194703495795414}
   - {fileID: 1008667015378985489}
   m_Bounds:
-    m_Center: {x: -0.040721893, y: 0.06271553, z: 0}
-    m_Extent: {x: 2.0162492, y: 3.2150593, z: 0}
+    m_Center: {x: -0.040721655, y: 0.06270933, z: 0}
+    m_Extent: {x: 2.0162492, y: 3.2150607, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6928737972857576001}
   m_Bounds:
-    m_Center: {x: 0.004713297, y: -0.2576599, z: 0}
+    m_Center: {x: 0.004713297, y: -0.25766754, z: 0}
     m_Extent: {x: 3.5271592, y: 3.445763, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -315,8 +315,8 @@ MonoBehaviour:
   - {fileID: 7985560738225300019}
   - {fileID: 3264035906287953158}
   m_Bounds:
-    m_Center: {x: 0.38991332, y: 0.0660975, z: 0}
-    m_Extent: {x: 2.602927, y: 2.9511454, z: 0}
+    m_Center: {x: 0.38991332, y: 0.06609154, z: 0}
+    m_Extent: {x: 2.602927, y: 2.951147, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5513934765619452471}
   m_Bounds:
-    m_Center: {x: 0.24594438, y: -0.004988909, z: 0}
+    m_Center: {x: 0.24594438, y: -0.0049927235, z: 0}
     m_Extent: {x: 1.2760258, y: 1.3275251, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -748,7 +748,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6807017937909705100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.000000022319714, w: 1}
   m_LocalPosition: {x: 4.160697, y: 0.00000030193382, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 1635190266328664153}
   m_Layer: 7
   m_Name: Samudra
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   isInvincible: 0
   invincibilityTime: 1
   _maxHealth: 100
+  _health: 100
 --- !u!114 &1635190266328664153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,7 +1349,7 @@ MonoBehaviour:
   - {fileID: 3196714893639576393}
   - {fileID: 5513934765619452471}
   m_Bounds:
-    m_Center: {x: 0.11251569, y: 0.046108723, z: 0}
+    m_Center: {x: 0.11251569, y: 0.046104908, z: 0}
     m_Extent: {x: 2.775607, y: 4.600744, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1441,7 +1442,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314092561210462387}
-  m_LocalRotation: {x: -0, y: -0, z: -0.024062308, w: 0.9997105}
+  m_LocalRotation: {x: -0, y: -0, z: -0.02406233, w: 0.9997105}
   m_LocalPosition: {x: 4.68, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1741,8 +1742,8 @@ MonoBehaviour:
   - {fileID: 3196714893639576393}
   - {fileID: 8521194703495795414}
   m_Bounds:
-    m_Center: {x: -0.06776786, y: 0.022904396, z: 0}
-    m_Extent: {x: 2.0232537, y: 2.9696178, z: 0}
+    m_Center: {x: -0.06776786, y: 0.02289772, z: 0}
+    m_Extent: {x: 2.0232537, y: 2.9696188, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1847,7 +1848,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7239873687227571815}
   m_Bounds:
-    m_Center: {x: 0.24007893, y: -0.027398586, z: 0}
+    m_Center: {x: 0.24007893, y: -0.027402401, z: 0}
     m_Extent: {x: 8.964086, y: 7.183871, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1986,8 +1987,8 @@ MonoBehaviour:
   - {fileID: 3264035906287953158}
   - {fileID: 3196714893639576393}
   m_Bounds:
-    m_Center: {x: 0.063212514, y: -0.05619359, z: 0}
-    m_Extent: {x: 1.4436295, y: 2.9435887, z: 0}
+    m_Center: {x: 0.063212514, y: -0.05619812, z: 0}
+    m_Extent: {x: 1.4436295, y: 2.9435897, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -2092,7 +2093,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8181008339061173846}
   m_Bounds:
-    m_Center: {x: 0.23607731, y: 0.032783985, z: 0}
+    m_Center: {x: 0.23607731, y: 0.03278017, z: 0}
     m_Extent: {x: 3.9994726, y: 3.564211, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
