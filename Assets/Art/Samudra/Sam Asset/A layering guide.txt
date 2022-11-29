@@ -1,0 +1,14 @@
+Top to bottom:
+1.Head
+2.Right Arm
+3.Torso
+4.Neck
+5.Left Arm
+6.Right Leg
+  6a.Upper Right Leg
+  6b.Lower Right Leg
+  6c.Right Shoe
+7.Left Leg
+  7a.Upper Left Leg
+  7b.Lower Left Leg
+  7c.Left Shoe
