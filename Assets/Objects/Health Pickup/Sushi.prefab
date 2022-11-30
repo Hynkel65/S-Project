@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 216808657149363806}
   - component: {fileID: 1812117557041666328}
   - component: {fileID: 6158750342813179129}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sushi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthRestore: 25
+  spinRotationSpeed: {x: 0, y: 180, z: 0}
 --- !u!61 &6158750342813179129
 BoxCollider2D:
   m_ObjectHideFlags: 0

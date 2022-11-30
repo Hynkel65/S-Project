@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public float agroMoveSpeed = 8f;
     [SerializeField] bool isAgro;
     [SerializeField] bool isSearching;
+    [SerializeField] bool isChasing;
     public Transform player;
 
     [Header("Detection")]
@@ -112,30 +113,42 @@ public class Enemy : MonoBehaviour
         touchingCol = GetComponent<CapsuleCollider2D>();
         damageable = GetComponent<Damageable>();
         isAgro = false;
+        isChasing = false;
     }
 
     private void Update()
     {
-        if (CanSeePlayer(agroRange))
+        if (CanSeePlayer(agroRange) && !isAgro)
         {
             //agro enemy
             isAgro = true;
         }
         else
         {
-            if (isAgro)
+            if (isAgro && touchingDirections.isGrounded)
             {
+                isChasing = true;
+                ChasePlayer();
+                Debug.Log("Agro Movement Speed");
+
                 if (!isSearching)
                 {
-                    isSearching = true;
-                    //Invoke("StopChasingPlayer", 5);
                     StartCoroutine(StopChasingPlayer());
                 }
             }
         }
 
-        if (isAgro)
-            ChasePlayer();
+        if (!isChasing)
+        {
+            if (cliffZone.detectedColliders.Count == 0)
+            {
+                if (!isAgro && !isSearching)
+                {
+                    FlipDirection();
+                }
+            }
+        }
+
 
         HasTarget = attackZone.detectedColliders.Count > 0;
 
@@ -147,7 +160,7 @@ public class Enemy : MonoBehaviour
     {
         isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
 
-        if (!CanSeePlayer(agroRange))
+        if (!isAgro && !isSearching)
         {
             if (touchingDirections.isGrounded && isOnWall)
             {
@@ -156,14 +169,15 @@ public class Enemy : MonoBehaviour
 
             if (!damageable.LockMovement)
             {
-                Patrol();
+                Move();
+                Debug.Log("Movement Speed");
             }
         }
     }
 
-    private void Patrol()
+    private void Move()
     {
-        if (canMove /*&& touchingDirections.isGrounded*/)
+        if (canMove && touchingDirections.isGrounded)
             rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
         else
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
@@ -211,17 +225,34 @@ public class Enemy : MonoBehaviour
         if (transform.position.x < player.position.x)
         {
             //enemy is to the left of the player, then move right
-            rb.velocity = new Vector2(agroMoveSpeed, 0);
-            //transform.localScale = new Vector2(1, 1);
-            //isFacingRight = true;
+            if (cliffZone.detectedColliders.Count == 0)
+            {
+                rb.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                if (canMove && touchingDirections.isGrounded)
+                    rb.velocity = new Vector2(agroMoveSpeed, 0);
+                else
+                    rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+
+            }
             WalkDirection = WalkableDirection.Right;
         }
         else
         {
-            //enemy is to the right of the player, then move left
-            rb.velocity = new Vector2(-agroMoveSpeed, 0);
-            //transform.localScale = new Vector2(-1, 1);
-            //isFacingRight = false;
+            //enemy is to the right of the player, then move left  
+            if (cliffZone.detectedColliders.Count == 0)
+            {
+                rb.velocity = new Vector2(0, 0);
+            }
+            else
+            {
+                if (canMove && touchingDirections.isGrounded)
+                    rb.velocity = new Vector2(-agroMoveSpeed, 0);
+                else
+                    rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+            }
             WalkDirection = WalkableDirection.Left;
         }
     }
@@ -250,8 +281,10 @@ public class Enemy : MonoBehaviour
 
     IEnumerator StopChasingPlayer()
     {
+        isSearching = true;
         yield return new WaitForSeconds(5);
         isAgro = false;
         isSearching = false;
+        isChasing = false;
     }
 }

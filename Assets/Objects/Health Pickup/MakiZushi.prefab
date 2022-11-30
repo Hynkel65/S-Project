@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7499176127308605695}
   - component: {fileID: -3446931809631096272}
   - component: {fileID: -8646208172924740263}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MakiZushi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthRestore: 50
+  spinRotationSpeed: {x: 0, y: 180, z: 0}

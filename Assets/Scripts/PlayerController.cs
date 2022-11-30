@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (isAlive)
+        if (isAlive && !_isDashing)
         {
             if (touchingDirections.isGrounded)
             {
