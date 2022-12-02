@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
     public Transform player;
 
     [Header("Detection")]
-    public ContactFilter2D castFilter;
     CapsuleCollider2D touchingCol;
     public DetectionZone attackZone;
     public DetectionZone cliffZone;
@@ -36,7 +35,6 @@ public class Enemy : MonoBehaviour
     private Vector2 walkDirectionVector = Vector2.right;
     private WalkableDirection _walkDirection;
 
-    RaycastHit2D[] wallHits = new RaycastHit2D[5];
     public WalkableDirection WalkDirection
     {
         get { return _walkDirection; }
@@ -75,24 +73,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    [SerializeField]
-    private bool _isOnWall;
-
-    private Vector2 wallCheckDirection => gameObject.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-
-    public bool isOnWall 
-    { 
-        get 
-        {
-            return _isOnWall;
-        } 
-        private set
-        {
-            _isOnWall = value;
-            animator.SetBool("isOnWall", _isOnWall);
-        } 
-    }
-
     public float attackCooldown 
     {
         get
@@ -129,7 +109,6 @@ public class Enemy : MonoBehaviour
             {
                 isChasing = true;
                 ChasePlayer();
-                Debug.Log("Agro Movement Speed");
 
                 if (!isSearching)
                 {
@@ -148,8 +127,6 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
-
         HasTarget = attackZone.detectedColliders.Count > 0;
 
         if(attackCooldown > 0)
@@ -158,11 +135,9 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
-
         if (!isAgro && !isSearching)
         {
-            if (touchingDirections.isGrounded && isOnWall)
+            if (touchingDirections.isGrounded && touchingDirections.isOnWall)
             {
                 FlipDirection();
             }
@@ -170,7 +145,6 @@ public class Enemy : MonoBehaviour
             if (!damageable.LockMovement)
             {
                 Move();
-                Debug.Log("Movement Speed");
             }
         }
     }
@@ -225,33 +199,32 @@ public class Enemy : MonoBehaviour
         if (transform.position.x < player.position.x)
         {
             //enemy is to the left of the player, then move right
-            if (cliffZone.detectedColliders.Count == 0)
-            {
-                rb.velocity = new Vector2(0, 0);
-            }
-            else
+            if (cliffZone.detectedColliders.Count > 0)
             {
                 if (canMove && touchingDirections.isGrounded)
                     rb.velocity = new Vector2(agroMoveSpeed, 0);
                 else
                     rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
-
             }
-            WalkDirection = WalkableDirection.Right;
-        }
-        else
-        {
-            //enemy is to the right of the player, then move left  
-            if (cliffZone.detectedColliders.Count == 0)
+            else
             {
                 rb.velocity = new Vector2(0, 0);
             }
-            else
+            WalkDirection = WalkableDirection.Right;
+        }
+        else if (transform.position.x > player.position.x)
+        {
+            //enemy is to the right of the player, then move left  
+            if (cliffZone.detectedColliders.Count > 0)
             {
                 if (canMove && touchingDirections.isGrounded)
                     rb.velocity = new Vector2(-agroMoveSpeed, 0);
                 else
                     rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, 0);
             }
             WalkDirection = WalkableDirection.Left;
         }

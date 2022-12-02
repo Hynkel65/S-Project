@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -4613,8 +4613,8 @@ TextureImporter:
       mainlev_build_44: -575590544
       mainlev_build_22: 644013072
       mainlev_build_42: 1395990540
-      mainlev_build_185: 1149519276
       mainlev_build_56: -973490970
+      mainlev_build_185: 1149519276
       mainlev_build_129: -1106712982
       mainlev_build_13: -265961604
       mainlev_build_35: -1090809383

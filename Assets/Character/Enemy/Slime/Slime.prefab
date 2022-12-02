@@ -416,26 +416,12 @@ MonoBehaviour:
   agroMoveSpeed: 6
   isAgro: 0
   isSearching: 0
+  isChasing: 0
   player: {fileID: 0}
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
   attackZone: {fileID: 6343081510031906125}
   cliffZone: {fileID: 6343081509907543158}
   castPoint: {fileID: 6343081509526439597}
   _hasTarget: 0
-  _isOnWall: 0
 --- !u!114 &6343081511158522249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,7 +449,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   groundDistance: 0.05
+  wallDistance: 0.2
   _isGrounded: 0
+  _isOnWall: 0
 --- !u!95 &6343081511158522250
 Animator:
   serializedVersion: 4

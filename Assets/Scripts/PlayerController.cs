@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     public float jumpPower = 10f;
+    public float fallMultiplier = 3f;
+    public float jumpMultiplier = 1.2f;
     private int extraJumps;
-    public int extraJumpsValue;
-    //[SerializeField] private bool canDoubleJump = true;
+    public int extraJumpsValue = 1;
+    Vector2 vecGravity;
 
     [Header("Turn")]
     public bool _isFacingRight;
@@ -24,10 +26,9 @@ public class PlayerController : MonoBehaviour
     public float dashPower = 200f;
     public float dashTime = 0.2f;
     public float dashCooldown = 2f;
-    private float waitTime;
     TrailRenderer dashTrail;
     [SerializeField] bool canDash = true;
-    [SerializeField] public bool _isDashing = false;
+    public bool _isDashing = false;
 
 
     Vector2 moveInput;
@@ -89,14 +90,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool isFacingRight { get { return _isFacingRight; } private set {
+    public bool isFacingRight
+    {
+        get { return _isFacingRight; }
+        private set
+        {
             if (isFacingRight != value)
             {
                 transform.localScale *= new Vector2(-1, 1);
             }
 
             _isFacingRight = value;
-        } }
+        }
+    }
 
     public bool canMove
     {
@@ -125,7 +131,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("lockMovement", value);
         }
     }
-    
+
 
     private void Awake()
     {
@@ -134,12 +140,13 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<GroundDetection>();
         dashTrail = GetComponent<TrailRenderer>();
         damageable = GetComponent<Damageable>();
-        _isFacingRight =  true;
+        _isFacingRight = true;
     }
 
     private void Start()
     {
         extraJumps = extraJumpsValue;
+        vecGravity = new Vector2(0, -Physics2D.gravity.y);
     }
 
     private void Update()
@@ -148,6 +155,9 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
+        if (rb.velocity.y < 0)
+            rb.velocity -= vecGravity * fallMultiplier * Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -157,9 +167,9 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(!damageable.LockMovement)
+        if (!damageable.LockMovement)
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
-            animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -180,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     private void Turn(Vector2 moveInput)
     {
-        if(moveInput.x > 0 && !isFacingRight)
+        if (moveInput.x > 0 && !isFacingRight)
         {
             isFacingRight = true;
         }
@@ -192,7 +202,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.performed && canDash)
+        if (context.performed && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -207,16 +217,14 @@ public class PlayerController : MonoBehaviour
                 extraJumps = extraJumpsValue;
             }
 
-            if (context.performed && extraJumps > 0)
+            if (context.started && extraJumps == 0 && touchingDirections.isGrounded)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                extraJumps--;
-
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower * jumpMultiplier);
             }
-            else if (context.performed && extraJumps == 0 && touchingDirections.isGrounded)
+            else if (context.started && extraJumps > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower * jumpMultiplier);
+                extraJumps--;
             }
         }
     }
