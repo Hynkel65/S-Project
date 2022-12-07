@@ -30,9 +30,9 @@ public class UIManager : MonoBehaviour
     public void CharacterTookDamage(GameObject character, int damageReceived)
     {
         //create text at character hit
-        Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
+        //Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 
-        TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
+        TMP_Text tmpText = Instantiate(damageTextPrefab, character.transform.position, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = damageReceived.ToString();
     }
@@ -40,9 +40,9 @@ public class UIManager : MonoBehaviour
     public void CharacterHealed(GameObject character, int healthRestored)
     {
         //create text at character heal
-        Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
+        //Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
 
-        TMP_Text tmpText = Instantiate(healthTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
+        TMP_Text tmpText = Instantiate(healthTextPrefab, character.transform.position, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = healthRestored.ToString();
     }

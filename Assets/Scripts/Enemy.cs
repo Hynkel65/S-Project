@@ -7,13 +7,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Movement")]
-    public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3f;
     public float wallDistance = 0.2f;
     public float walkStopRate = 0.05f;
 
     [Header("Agro")]
     public float agroRange = 4f;
-    public float agroMoveSpeed = 8f;
+    public float maxAgroMoveSpeed = 8f;
     [SerializeField] bool isAgro;
     [SerializeField] bool isSearching;
     [SerializeField] bool isChasing;
@@ -152,7 +153,8 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         if (canMove && touchingDirections.isGrounded)
-            rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+            //rb.velocity = new Vector2(maxSpeed, 0);
+            rb.velocity = new Vector2(MathF.Min(Math.Max(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), -maxSpeed), maxSpeed), rb.velocity.y);
         else
             rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
     }
@@ -202,9 +204,11 @@ public class Enemy : MonoBehaviour
             if (cliffZone.detectedColliders.Count > 0)
             {
                 if (canMove && touchingDirections.isGrounded)
-                    rb.velocity = new Vector2(agroMoveSpeed, 0);
+                    //rb.velocity = new Vector2(maxAgroMoveSpeed, 0);
+                    rb.velocity = new Vector2(MathF.Min(Math.Max(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), -maxAgroMoveSpeed), maxAgroMoveSpeed), rb.velocity.y);
                 else
                     rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+                    
             }
             else
             {
@@ -218,7 +222,8 @@ public class Enemy : MonoBehaviour
             if (cliffZone.detectedColliders.Count > 0)
             {
                 if (canMove && touchingDirections.isGrounded)
-                    rb.velocity = new Vector2(-agroMoveSpeed, 0);
+                    //rb.velocity = new Vector2(-maxAgroMoveSpeed, 0);
+                    rb.velocity = new Vector2(MathF.Min(Math.Max(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), maxAgroMoveSpeed), -maxAgroMoveSpeed), rb.velocity.y);
                 else
                     rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
             }

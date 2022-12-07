@@ -409,11 +409,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecef821ab275c743a598d214253a6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
+  walkAcceleration: 50
+  maxSpeed: 3
   wallDistance: 0.2
   walkStopRate: 0.05
   agroRange: 5
-  agroMoveSpeed: 6
+  maxAgroMoveSpeed: 5
   isAgro: 0
   isSearching: 0
   isChasing: 0

@@ -1,5 +1,78 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &453663874807246164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2628603883470511154}
+  - component: {fileID: 4796288910706436306}
+  - component: {fileID: 5416882676125298179}
+  m_Layer: 9
+  m_Name: meleeAttack2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2628603883470511154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453663874807246164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.2, y: 12.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8263883652202909726}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4796288910706436306
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453663874807246164}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.1179142, y: 4.17}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.203014, y: 29.111588}
+  m_EdgeRadius: 0
+--- !u!114 &5416882676125298179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453663874807246164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb7bfd2a52b398499a19759b6e9959a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 15
+  knockback: {x: 2, y: 0}
 --- !u!1 &479346438931928446
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +175,7 @@ MonoBehaviour:
   - {fileID: 8521194703495795414}
   - {fileID: 1008667015378985489}
   m_Bounds:
-    m_Center: {x: -0.040766478, y: 0.06274724, z: 0}
+    m_Center: {x: -0.040766716, y: 0.06274724, z: 0}
     m_Extent: {x: 2.016231, y: 3.2150526, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -208,7 +281,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6928737972857576001}
   m_Bounds:
-    m_Center: {x: 0.0044691563, y: -0.25766754, z: 0}
+    m_Center: {x: 0.0044691563, y: -0.2576599, z: 0}
     m_Extent: {x: 3.5271595, y: 3.4457633, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -242,7 +315,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8263883652202909726}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1995366805214579209
 GameObject:
@@ -346,8 +419,8 @@ MonoBehaviour:
   - {fileID: 7985560738225300019}
   - {fileID: 3264035906287953158}
   m_Bounds:
-    m_Center: {x: 0.39003277, y: 0.06606054, z: 0}
-    m_Extent: {x: 2.602754, y: 2.9511485, z: 0}
+    m_Center: {x: 0.390033, y: 0.066064835, z: 0}
+    m_Extent: {x: 2.6027544, y: 2.9511452, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -394,7 +467,7 @@ GameObject:
   - component: {fileID: 8592919503501026455}
   - component: {fileID: 5976853275100548446}
   m_Layer: 9
-  m_Name: meleeAttack
+  m_Name: meleeAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,8 +526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb7bfd2a52b398499a19759b6e9959a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 15
-  knockback: {x: 3, y: 1}
+  attackDamage: 10
+  knockback: {x: 2, y: 0}
 --- !u!1 &3146566233684863889
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +648,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5720763342071682328}
-  m_LocalRotation: {x: 0, y: 0, z: 0.9982712, w: 0.058776043}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9982712, w: 0.058776077}
   m_LocalPosition: {x: 0.77068585, y: 1.3439374, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -685,7 +758,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5513934765619452471}
   m_Bounds:
-    m_Center: {x: 0.24594438, y: -0.004988909, z: 0}
+    m_Center: {x: 0.24594438, y: -0.0049927235, z: 0}
     m_Extent: {x: 1.2760258, y: 1.3275251, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -747,7 +820,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6398100172961426666}
-  m_LocalRotation: {x: 0, y: 0, z: -0.00000036007538, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.00000027077132, w: 1}
   m_LocalPosition: {x: 4.1415706, y: 0.0000018271276, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -756,6 +829,79 @@ Transform:
   m_Father: {fileID: 3264035906287953158}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6806502617239661879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537646433311700987}
+  - component: {fileID: 5925524234558377984}
+  - component: {fileID: 3694940427358673473}
+  m_Layer: 9
+  m_Name: meleeAttack3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537646433311700987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806502617239661879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.2, y: 12.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8263883652202909726}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5925524234558377984
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806502617239661879}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.1179142, y: 4.17}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.203014, y: 29.111588}
+  m_EdgeRadius: 0
+--- !u!114 &3694940427358673473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806502617239661879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb7bfd2a52b398499a19759b6e9959a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 25
+  knockback: {x: 5, y: 0}
 --- !u!1 &6807017937909705100
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +925,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6807017937909705100}
-  m_LocalRotation: {x: 0, y: 0, z: -0.00000003347957, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.000000029759617, w: 1}
   m_LocalPosition: {x: 4.160697, y: 0.00000030193382, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -841,6 +987,8 @@ Transform:
   - {fileID: 7314092560560186924}
   - {fileID: 1571604109039990638}
   - {fileID: 1384841573395346729}
+  - {fileID: 2628603883470511154}
+  - {fileID: 537646433311700987}
   - {fileID: 1667425418806929960}
   - {fileID: 4399547520851892070}
   m_Father: {fileID: 0}
@@ -1115,6 +1263,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  damageableDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   isInvincible: 0
   invincibilityTime: 1
   _maxHealth: 100
@@ -1260,7 +1414,7 @@ TrailRenderer:
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1273,6 +1427,15 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1311,7 +1474,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 0
 --- !u!1 &7208507175867453006
@@ -1416,8 +1579,8 @@ MonoBehaviour:
   - {fileID: 3196714893639576393}
   - {fileID: 5513934765619452471}
   m_Bounds:
-    m_Center: {x: 0.112364054, y: 0.046101093, z: 0}
-    m_Extent: {x: 2.7756996, y: 4.600744, z: 0}
+    m_Center: {x: 0.112364054, y: 0.0461092, z: 0}
+    m_Extent: {x: 2.7756996, y: 4.6007442, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1450,7 +1613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8263883652202909726}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7314092560560186898
 GameObject:
@@ -1540,7 +1703,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314092561210462387}
-  m_LocalRotation: {x: -0, y: -0, z: -0.024051696, w: 0.9997108}
+  m_LocalRotation: {x: -0, y: -0, z: -0.024051666, w: 0.9997108}
   m_LocalPosition: {x: 4.68, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1571,7 +1734,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314092561274295167}
-  m_LocalRotation: {x: -0, y: -0, z: -0.061126642, w: 0.99813}
+  m_LocalRotation: {x: -0, y: -0, z: -0.061126728, w: 0.99813}
   m_LocalPosition: {x: 4.22, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1840,8 +2003,8 @@ MonoBehaviour:
   - {fileID: 3196714893639576393}
   - {fileID: 8521194703495795414}
   m_Bounds:
-    m_Center: {x: -0.067668915, y: 0.022907019, z: 0}
-    m_Extent: {x: 2.0231547, y: 2.9696233, z: 0}
+    m_Center: {x: -0.067790985, y: 0.022901297, z: 0}
+    m_Extent: {x: 2.0230327, y: 2.9696255, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -1946,7 +2109,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7239873687227571815}
   m_Bounds:
-    m_Center: {x: 0.24007797, y: -0.027402401, z: 0}
+    m_Center: {x: 0.24007797, y: -0.027398586, z: 0}
     m_Extent: {x: 8.964087, y: 7.1838713, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2085,8 +2248,8 @@ MonoBehaviour:
   - {fileID: 3264035906287953158}
   - {fileID: 3196714893639576393}
   m_Bounds:
-    m_Center: {x: 0.06306493, y: -0.056190968, z: 0}
-    m_Extent: {x: 1.4437261, y: 2.9435897, z: 0}
+    m_Center: {x: 0.06306493, y: -0.056187153, z: 0}
+    m_Extent: {x: 1.4437261, y: 2.9435906, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -2116,7 +2279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9164941962098805321}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.984375, y: 14.125, z: 0}
+  m_LocalPosition: {x: -8.21, y: 10.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2191,8 +2354,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8181008339061173846}
   m_Bounds:
-    m_Center: {x: 0.23607731, y: 0.032776356, z: 0}
-    m_Extent: {x: 3.9994736, y: 3.5642116, z: 0}
+    m_Center: {x: 4.4616632, y: 3.737778, z: 0}
+    m_Extent: {x: 3.9994736, y: 3.5642114, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
