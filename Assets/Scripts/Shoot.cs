@@ -19,7 +19,5 @@ public class Shoot : MonoBehaviour
             origScale.y,
             origScale.z
             );
-
-
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5498564022816266730}
   - component: {fileID: 5498564022816266731}
   - component: {fileID: -3246445628481251253}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: samudraProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

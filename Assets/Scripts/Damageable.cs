@@ -48,12 +48,14 @@ public class Damageable : MonoBehaviour
             if(_health <= 0)
             {
                 isAlive = false;
+                Destroy(gameObject, 2f);
                 Debug.Log("Dead");
             }
         }
     }
 
-    private bool _isAlive = true;
+    [SerializeField]
+    public bool _isAlive = true;
 
     public bool isAlive
     {

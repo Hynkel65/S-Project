@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 6343081511158522250}
   - component: {fileID: 6343081511158522251}
   m_Layer: 8
-  m_Name: Slime
+  m_Name: MeleeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -500,7 +500,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   isInvincible: 0
   invincibilityTime: 0.25
   _maxHealth: 100
   _health: 100
+  _isAlive: 1

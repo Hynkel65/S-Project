@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject damageTextPrefab;
     public GameObject healthTextPrefab;
 
+    public GameObject gameOverUI;
+
     public Canvas gameCanvas;
+
+    public GameObject player;
+    Damageable damageable;
+
+
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     private void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
+        damageable = player.GetComponent<Damageable>();
     }
 
     private void OnEnable()
@@ -45,5 +59,40 @@ public class UIManager : MonoBehaviour
         TMP_Text tmpText = Instantiate(healthTextPrefab, character.transform.position, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = healthRestored.ToString();
+    }
+
+
+    private void Update()
+    {
+        if (gameOverUI.activeInHierarchy)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (!damageable.isAlive)
+            GameOver();
+    }
+
+    public void GameOver()
+    {
+            gameOverUI.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("RESTART");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Debug.Log("MAIN MENU");
     }
 }

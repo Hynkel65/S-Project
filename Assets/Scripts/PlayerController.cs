@@ -30,12 +30,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool canDash = true;
     public bool _isDashing = false;
 
+    [Header("Shoot")]
+    public float shootingCooldown = 2f;
+    float timer;
+
 
     Vector2 moveInput;
     Rigidbody2D rb;
     Animator animator;
     GroundDetection touchingDirections;
     Damageable damageable;
+    Shoot shoot;
 
     public float CurrentMoveSpeed
     {
@@ -140,6 +145,7 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<GroundDetection>();
         dashTrail = GetComponent<TrailRenderer>();
         damageable = GetComponent<Damageable>();
+        shoot = GetComponent<Shoot>();
         _isFacingRight = true;
     }
 
@@ -147,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
+        timer = shootingCooldown;
     }
 
     private void Update()
