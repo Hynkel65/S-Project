@@ -52,8 +52,9 @@ public class Switch : MonoBehaviour
 
         if (on)
         {
-            if (Target != null)
+            if (Target != null && !string.IsNullOrEmpty(onMessage))
                 Target.SendMessage(onMessage);
+
             if (_resetType == ResetType.Immediately)
                 TurnOff();
             else if (_resetType == ResetType.Timed)
@@ -61,7 +62,7 @@ public class Switch : MonoBehaviour
         }
         else
         {
-            if (Target != null)
+            if (Target != null && !string.IsNullOrEmpty(offMessage))
                 Target.SendMessage(offMessage);
         }
     }

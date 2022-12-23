@@ -46,4 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTextPrefab: {fileID: 7349218074316306270, guid: a5497fd449ffa5f41a699dac79f4ec44, type: 3}
   healthTextPrefab: {fileID: 7349218074316306270, guid: 2a7c0eb2ea2627145bdee6fb0c3e8778, type: 3}
+  gameOverUI: {fileID: 0}
+  respawnBtn: {fileID: 0}
+  MenuBtn: {fileID: 0}
   gameCanvas: {fileID: 0}
+  player: {fileID: 0}
+  timerValue: 2

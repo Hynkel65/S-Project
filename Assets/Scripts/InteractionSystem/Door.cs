@@ -42,7 +42,7 @@ public class Door : MonoBehaviour
     void setState(bool open)
     {
         _isOpen = open;
-        col.isTrigger = open;
         animator.SetBool("IsOpen", open);
+        col.isTrigger = open;
     }
 }
