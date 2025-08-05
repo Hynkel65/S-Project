@@ -36,11 +36,7 @@ Izdihar - Art and design
 
 Screenshots
 
-![Sam final look concept](Assets/Art/Samudra/Sam final look concept.jpg)
-
-![The Samudra main menu concept](Assets/Art/Main Menu/The Samudra main menu concept.jpg)
-
-
+![Sam final look concept](Assets/Art/Samudra/Sam-final-look-concept.jpg)
 
 --------------
 
