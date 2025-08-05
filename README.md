@@ -35,7 +35,11 @@ Izdihar - Art and design
 ------------
 
 Screenshots
-[Add screenshots or a short GIF of your game here! This is a great way to showcase your progress.]
+![Sam final look concept](S-Project/Assets/Art/Samudra/Sam final look concept.jpg)
+
+![The Samudra main menu concept](S-Project/Assets/Art/Main Menu/The Samudra main menu concept.jpg)
+
+
 
 --------------
 
