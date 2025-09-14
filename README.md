@@ -29,7 +29,7 @@ Wijdan - Art Lead
 Izdihar - Art and design
 
 
-Screenshots
+# 📸 Screenshots
 
 ![Sam final look concept](Assets/Art/Samudra/Sam-final-look-concept.jpg)
 --------------
