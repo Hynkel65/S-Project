@@ -1,4 +1,4 @@
-#Samudra
+# Samudra
 
 A 2D Platformer Side-Scroller
 This project is a 2D platformer side-scroller game called "Samudra," developed as a fun school project. While we didn't get to finish the game completely due to our school commitments, we're proud of the work we accomplished and are calling it "done" for now. This repository stands as a tribute to our team's effort and a great learning experience.
