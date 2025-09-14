@@ -31,7 +31,9 @@ Izdihar - Art and design
 
 # 📸 Screenshots
 
-![Sam final look concept](Assets/Art/Samudra/Sam-final-look-concept.jpg)
+<div align="center">
+  <img src="Assets/Art/Samudra/Sam-final-look-concept.jpg" alt="Sam final look concept">
+</div>
 --------------
 
 License
